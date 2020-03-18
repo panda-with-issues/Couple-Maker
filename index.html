@@ -1,19 +1,20 @@
 <!-- 
-  Couple-maker is a simple web app that makes couple out of a list of persons and, at every new call, make a new list oc couples avoiding previous pairments
-    Copyright (C) 2020 Yuuki Gaudiuso
+  Couple-maker is a simple web app that makes couple out of a list of persons and,
+  at every new call, make a new list of couples avoiding previous pairments
+  Copyright (C) 2020 Yuuki Gaudiuso
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  -->
 
 <!DOCTYPE html>
@@ -22,19 +23,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./Resources/Script/main.js" type="text/javascript" defer></script>
+  <noscript>Questa app ha bisogno di JavaScript per funzionare. Controlla che JavaScript sia correttamente installato nel tuo sistema e
+    di aver dato il permesso al tuo browser di eseguire script su questa pagina</noscript>
   <title>Couple Maker</title>
 </head>
 <body>
   <h1>Couple Maker</h1>
+
   <h3>Istruzioni</h3>
+
   <!-- Add new person to party -->
   <h3>1. Inserisci partecipante:</h3>
   <form>
     <label for="name-field">Nome:</label>
-    <input type="text" id="name-field" name="name" required>
+    <input type="text" id="name-field" required>
     <button id="name-submit">Aggiungi</button>
   </form>
-  <h4>Persone iserite:</h4>
+  <h4>Persone inserite:</h4>
   <p id="persons-container"></p>
 
 </body>
