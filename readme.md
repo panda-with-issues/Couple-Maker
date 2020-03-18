@@ -11,11 +11,11 @@ Couple Maker is written for an event organized by Associazione Studentesca Unive
 
 Because of the very specific use intended for this app, I won't mantain it. If you find any bug, please report it and, according to my spare time, I'll try to fix it.
 
-## Instruction
+## Instructions
 
 Simply open index.html with your favorite browser and follow displayed instructions.
-Couple Maker needs *JavaScript to be installed* and *allowed to run* in your browser to work.
-*Warning*: Couple Maker comes with no server space or back-end functionality, thus *all data inserted in the app won't be saved and will be lost when you close the app*. This is intended and won't be changed.
+Couple Maker needs **JavaScript to be installed** and **allowed to run** in your browser to work.
+**Warning**: Couple Maker comes with no server space or back-end functionality, thus **all data inserted in the app won't be saved and will be lost when you close the app**. This is intended and won't be changed.
 
 ## License
 
