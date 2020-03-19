@@ -23,6 +23,7 @@ const nameButton = document.getElementById('name-submit')
 const personsContainer = document.getElementById('persons-container')
 const turnButton = document.getElementById('turn-button')
 const generateButton = document.getElementById('generate-button')
+const personCount = document.getElementById('person-count')
 
 // new classes
 class Party {
@@ -135,6 +136,7 @@ nameButton.onclick = (e) => {
   party.addPerson(nameField.value)
   clearField(nameField)
   party.renderPersons()
+  personCount.innerHTML = party.persons.length
 }
 
 generateButton.onclick = (e) => {
