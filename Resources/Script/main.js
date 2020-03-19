@@ -24,6 +24,7 @@ const personsContainer = document.getElementById('persons-container')
 const turnButton = document.getElementById('turn-button')
 const generateButton = document.getElementById('generate-button')
 const personCount = document.getElementById('person-count')
+const turnContainer = document.getElementById('turns-container')
 
 // new classes
 class Party {
@@ -93,7 +94,7 @@ class Party {
         }
       } else {
         // prompt user that there are no more possible pairments without repetitions
-        window.alert('Non sono più possibili accoppiamenti senza ripetizioni')
+        window.alert('Non sono più possibili accoppiamenti senza ripetizioni. Se desideri continuare, clicca di nuovo sul bottone "Genera Coppie"')
         return
       }
     }
@@ -130,6 +131,23 @@ const clearField = field => {
   field.value = ''
 }
 
+function stringify (couple) {
+  return `${couple[0].name} chiama ${couple[1].name}.`
+}
+
+function renderTurn (turnCount, turn) {
+  const card = document.createElement('div')
+  const title = document.createElement('h3')
+  title.innerHTML = `Turno ${turnCount}`
+  card.appendChild(title)
+  turn.forEach(couple => {
+    const p = document.createElement('p')
+    p.innerHTML = stringify(couple)
+    card.appendChild(p)
+  })
+  turnContainer.appendChild(card)
+}
+
 // Event Handlers
 nameButton.onclick = (e) => {
   e.preventDefault()
@@ -147,5 +165,7 @@ generateButton.onclick = (e) => {
 turnButton.onclick = (e) => {
   e.preventDefault()
   party.resetAvailability()
-  console.log(party.makeTurn())
+  const turn = party.makeTurn()
+  renderTurn(turnCount, turn)
+  turnCount++
 }
