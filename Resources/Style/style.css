@@ -15,7 +15,7 @@ body {
 .container {
   background-color: white;
   box-shadow: .3vh .3vh 1vh #770F37;
-  margin: 15vh auto 12vh auto;
+  margin: 10vh auto 17vh auto;
   padding: 1rem;
   width: 80vw;
   max-width: 1280px;
@@ -73,6 +73,7 @@ input {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin: 2vh auto;
 }
 
 .card {
