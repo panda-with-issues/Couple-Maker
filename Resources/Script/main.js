@@ -127,6 +127,32 @@ class Person {
 // Global variables
 const party = new Party()
 let turnCount = 1
+const colors = {
+  blue: {
+    background: '#9FCDF7',
+    border: '#143858'
+  },
+
+  green: {
+    background: '#95E189',
+    border: '#1C5E12'
+  },
+
+  yellow: {
+    background: '#FBF998',
+    border: '#82801A'
+  },
+
+  orange: {
+    background: '#FFC974',
+    border: '#7E5B23'
+  },
+
+  red: {
+    background: '#F07575',
+    border: '#872323'
+  }
+}
 
 // Functions
 const clearField = field => {
@@ -139,16 +165,27 @@ function stringify (couple) {
 
 function renderTurn (turnCount, turn) {
   const card = document.createElement('div')
-  card.classList.add('card')
   const title = document.createElement('h3')
-  title.innerHTML = `Turno ${turnCount}`
+  title.innerHTML = 'Turno ' + turnCount
   card.appendChild(title)
   turn.forEach(couple => {
     const p = document.createElement('p')
     p.innerHTML = stringify(couple)
     card.appendChild(p)
   })
+  styleCard(card)
   cardContainer.appendChild(card)
+}
+
+function styleCard (card) {
+  const colorsArr = Object.keys(colors)
+  const idx = Math.floor(Math.random() * colorsArr.length)
+  const color = colorsArr[idx]
+  card.classList.add('card')
+  card.style.backgroundColor = colors[color].background
+  card.children[0].style.color = colors[color].border
+  card.style.boxShadow = '2px 2px 5px' + colors[color].border
+  card.style.borderColor = colors[color].border
 }
 
 // Event Handlers
