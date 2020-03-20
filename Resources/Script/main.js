@@ -70,37 +70,57 @@ class Party {
   }
 
   makeTurn () {
-    // the function makes an array of couple it starts selecting the first available person in party.persons
+    // the function makes an array of couple
+    // start selecting the first available person in party.persons
     const available = this.persons.slice()
     const turn = []
     while (available.length) {
       const firstPerson = available[0]
       const choices = firstPerson.availablePairments
       if (choices.length) {
-        // if there are still any pairment not had before, choose a random pairment
-        const coupleIdx = Math.floor(Math.random() * choices.length)
-        const couple = choices[coupleIdx]
-        if (couple[1].isAvailable) {
-          // if the other person selected is not already in another couple
-          // remove the couples from availablePairements
-          choices.splice(coupleIdx, 1)
-          couple[1].removeSymmetrical(couple[0])
-          // mark the persons not available for other couples during this turn
-          couple[0].markBusy()
-          couple[1].markBusy()
-          // collect couple and remove persons from available person
-          available.shift()
-          const otherIdx = available.indexOf(couple[1])
-          available.splice(otherIdx, 1)
-          turn.push(couple)
+        // if there are still any pairments not had before
+        if (firstPerson.hasAvailable()) {
+          // if at least one of the person in possible couple is available
+          // choose a random couple
+          const coupleIdx = Math.floor(Math.random() * choices.length)
+          const couple = choices[coupleIdx]
+          if (couple[1].isAvailable) {
+            // if the other person selected is not already in another couple
+            // remove the couples from availablePairments
+            choices.splice(coupleIdx, 1)
+            couple[1].removeSymmetrical(couple[0])
+            // mark the persons not available for other couples during this turn
+            couple[0].markBusy()
+            couple[1].markBusy()
+            // collect couple and remove persons from available person
+            available.shift()
+            const otherIdx = available.indexOf(couple[1])
+            available.splice(otherIdx, 1)
+            turn.push(couple)
+          }
+        } else {
+          // if every person in possible couples is already busy
+          // reset the turn and call recursively the function
+          this.undoTurn(turn)
+          this.resetAvailability()
+          return this.makeTurn()
         }
       } else {
-        // prompt user that there are no more possible pairments without repetitions
+        // if no more couples are possible without repetitions
+        // prompt user
         window.alert('Non sono più possibili accoppiamenti senza ripetizioni. Se desideri continuare, clicca sul bottone "Rigenera Coppie"')
         return
       }
     }
     return turn
+  }
+
+  undoTurn (turn) {
+    turn.forEach(couple => {
+      couple[0].availablePairments.push(couple)
+      const symmCouple = [couple[1], couple[0]]
+      couple[1].availablePairments.push(symmCouple)
+    })
   }
 }
 
@@ -121,6 +141,12 @@ class Person {
 
   markBusy () {
     this.isAvailable = false
+  }
+
+  hasAvailable () {
+    return this.availablePairments.some(couple => {
+      return couple[1].isAvailable
+    })
   }
 }
 
