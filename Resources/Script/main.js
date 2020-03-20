@@ -1,6 +1,6 @@
 /*
-  Couple-maker is a simple web app that makes couple out of a list of persons and,
-  at every new call, make a new list of couples avoiding previous pairments
+  Couple-maker is a simple web app that makes couples out of a list of persons and,
+  at every new call, makes a new list of couples avoiding previous pairments
   Copyright (C) 2020 Yuuki Gaudiuso
 
   This program is free software: you can redistribute it and/or modify
@@ -24,7 +24,9 @@ const personsContainer = document.getElementById('persons-container')
 const turnButton = document.getElementById('turn-button')
 const generateButton = document.getElementById('generate-button')
 const personCount = document.getElementById('person-count')
-const turnContainer = document.getElementById('turns-container')
+const cardContainer = document.getElementById('card-container')
+const personSection = document.getElementById('person-section')
+const turnContainer = document.getElementById('turn-container')
 
 // new classes
 class Party {
@@ -76,7 +78,7 @@ class Party {
       const choices = firstPerson.availablePairments
       if (choices.length) {
         // if there are still any pairment not had before, choose a random pairment
-        const coupleIdx = Math.floor(Math.random() * (choices.length))
+        const coupleIdx = Math.floor(Math.random() * choices.length)
         const couple = choices[coupleIdx]
         if (couple[1].isAvailable) {
           // if the other person selected is not already in another couple
@@ -94,7 +96,7 @@ class Party {
         }
       } else {
         // prompt user that there are no more possible pairments without repetitions
-        window.alert('Non sono più possibili accoppiamenti senza ripetizioni. Se desideri continuare, clicca di nuovo sul bottone "Genera Coppie"')
+        window.alert('Non sono più possibili accoppiamenti senza ripetizioni. Se desideri continuare, clicca sul bottone "Rigenera Coppie"')
         return
       }
     }
@@ -137,6 +139,7 @@ function stringify (couple) {
 
 function renderTurn (turnCount, turn) {
   const card = document.createElement('div')
+  card.classList.add('card')
   const title = document.createElement('h3')
   title.innerHTML = `Turno ${turnCount}`
   card.appendChild(title)
@@ -145,7 +148,7 @@ function renderTurn (turnCount, turn) {
     p.innerHTML = stringify(couple)
     card.appendChild(p)
   })
-  turnContainer.appendChild(card)
+  cardContainer.appendChild(card)
 }
 
 // Event Handlers
@@ -160,6 +163,10 @@ nameButton.onclick = (e) => {
 generateButton.onclick = (e) => {
   e.preventDefault()
   party.generateAvailablePairments()
+  // trigger transitions
+  personSection.classList.add('hide')
+  turnContainer.classList.add('show')
+  e.target.innerHTML = 'Rigenera Coppie'
 }
 
 turnButton.onclick = (e) => {

@@ -26,27 +26,39 @@
   <script src="./Resources/Script/main.js" type="text/javascript" defer></script>
   <noscript>Questa app ha bisogno di JavaScript per funzionare. Controlla che JavaScript sia correttamente installato nel tuo sistema e
     di aver dato il permesso al tuo browser di eseguire script su questa pagina</noscript>
+  <link rel="stylesheet" type="text/css" href="./Resources/Style/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:700&display=swap" rel="stylesheet"> 
   <title>Couple Maker</title>
 </head>
 <body>
-  <h1>Couple Maker</h1>
+  <div class="container">
 
-  <h3>Istruzioni</h3>
+    <h1>Couple Maker</h1>
 
-  <!-- Add new person to party -->
-  <h3>1. Inserisci partecipante:</h3>
-  <form>
-    <label for="name-field">Nome:</label>
-    <input type="text" id="name-field" required>
-    <button id="name-submit">Aggiungi</button>
+    <!-- Add new person to party -->
+    <section id="person-section">
+      <h2>Inserisci partecipante:</h2>
+      <form>
+        <input type="text" id="name-field" placeholder="Nome" required>
+        <button id="name-submit">Aggiungi</button>
+      </form>
+      <h3>Persone inserite: <span id="person-count"></span></h3>
+      <p id="persons-container"></p>
+      <h3>Quando hai finito, genera i possibili accoppiamenti:</h3>
+    </section>
+
+    <!-- Transition trigger -->
+    <div id="box">
     <button id="generate-button">Genera Coppie</button>
-  </form>
-  <h4>Persone inserite: <span id="person-count"></span></h4>
-  <p id="persons-container"></p>
+    </div>
 
-  <!-- Display Turns -->
-  <button id="turn-button">Crea Turno</button>
-  <div id="turns-container"></div>
-
+    <!-- Display Turns -->
+    <section id="turn-container">
+      <h2>Premi sul pulsante per generare un turno</h2>
+      <button id="turn-button">Crea Turno</button>
+      <h3>Turni:</h3>
+      <div id="card-container"></div>
+    </section>
+  </div>
 </body>
 </html>

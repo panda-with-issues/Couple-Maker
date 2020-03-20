@@ -1,0 +1,114 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(#CC9AAD 0%, #AF5F7E 100%);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+  background-color: white;
+  box-shadow: .3vh .3vh 1vh #770F37;
+  margin: 10vh auto;
+  padding: 1rem;
+  width: 80vw;
+  max-width: 1280px;
+  min-height: 70vh;
+  border-radius: 35px;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  color: #770F37;
+  margin: 1rem;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 2rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p {
+  margin: .5rem auto;
+  max-width: 50vw;
+  font-size: 1.3rem;
+}
+
+button {
+  background-color: #D1BFC6;
+  color: #770F37;
+  margin: .5rem 1vw;
+  padding: .5rem;
+  border: solid #770F37 1px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #770F37;
+  color: #D1BFC6;
+  cursor: pointer;
+}
+
+input {
+  padding: .4rem;
+  border: solid #770F37 1px;
+  border-radius: 5px;
+}
+
+#card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 25px;
+  border-style: solid;
+  border-width: 1px;
+  box-shadow: 5px 5px 5px rosybrown;
+  margin: .5rem;
+  padding: 1rem;
+  text-align: left;
+}
+
+.card h3 {
+  margin-left: 0;
+  margin-top: .5rem;
+}
+
+/* transitions */
+
+#person-section {
+  visibility: visible;
+  opacity: 1;
+  max-height: 400px;
+  transition: all .5s;
+  z-index: -1;
+}
+
+.hide {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  max-height: 0px !important;
+}
+
+#turn-container {
+  opacity: 0;
+}
+
+.show {
+  opacity: 1 !important;
+}
