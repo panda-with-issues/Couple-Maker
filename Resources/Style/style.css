@@ -5,9 +5,9 @@
 }
 
 body {
-  width: 100vw;
-  height: 100vh;
   background-image: linear-gradient(#CC9AAD 0%, #AF5F7E 100%);
+  background-position: center;
+  background-size: cover;
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -15,7 +15,7 @@ body {
 .container {
   background-color: white;
   box-shadow: .3vh .3vh 1vh #770F37;
-  margin: 10vh auto;
+  margin: 15vh auto 12vh auto;
   padding: 1rem;
   width: 80vw;
   max-width: 1280px;
@@ -72,6 +72,7 @@ input {
 #card-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -86,6 +87,28 @@ input {
 .card h3 {
   margin-left: 0;
   margin-top: .5rem;
+}
+
+footer {
+  height: 3vh;
+  background-color: #770F37;
+  color: #CC9AAD;
+  text-align: right;
+  padding: .3rem 1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+a {
+  color: #CC9AAD;
+  text-decoration: none;
+}
+
+a:hover {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* transitions */
